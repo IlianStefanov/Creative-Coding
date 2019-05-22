@@ -39,7 +39,8 @@
         title: content.first.querySelector('.intro__title'),
         enter: content.first.querySelector('.intro__enter'),
 
-        aboutMeSlide: content.first.querySelector('.about__me__slide')
+        aboutMeSlide: content.first.querySelector('.about__me__slide'),
+        aboutMeTitle: content.first.querySelector('.about__me__title'),
     }
 
     const links = {
@@ -204,11 +205,13 @@
         }, 0)
         .to(firstPageContent.enter, defaultDuration, {
             ease: easing,
-            y: -69,
+            y: -20,
             opacity: 0
         }, 0)
         .to(firstPageContent.aboutMeSlide, defaultDuration, {
-            opacity: 1
+            ease: easing,
+            opacity: 1,
+            x: 20
         }, 1.5);
 
         // firstPageContent.img.classList.add('hide');
@@ -219,14 +222,23 @@
     links.aboutMe.addEventListener('click', showAboutPage);
 
     const backToIntro = () => {
-        firstPageContent.aboutMeSlide.classList.remove('active');
+        // firstPageContent.aboutMeSlide.classList.remove('active');
         // Intro is active 
         links.introLink.classList.add('active');
 
         // OTHER LINKS SHOUD BE SET BACK TO NORMAL STATE
         links.aboutMe.classList.remove('active');
         links.skills.classList.remove('active');
+
+        // this.backtoIntro_aboutTimeline = new TimelineMax()
+        // .to(firstPageContent.aboutMeSlide, defaultDuration, {
+        //     ease: easing,
+        //     opacity: 0,
+        //     y: -20
+        // }, 0.1);
+
         this.hideIntro.reverse();
+        //firstPageContent.aboutMeSlide.classList.replace('active', 'inactive');
     }
 
     links.introLink.addEventListener('click', backToIntro);
