@@ -188,7 +188,7 @@
         links.skills.classList.remove('active');
         links.introLink.classList.remove('active');
 
-        firstPageContent.aboutMeSlide.classList.add('active');
+        
 
         this.hideIntro = new TimelineMax()
         .to(firstPageContent.img, defaultDuration, {
@@ -207,38 +207,41 @@
             ease: easing,
             y: -20,
             opacity: 0
-        }, 0)
-        .to(firstPageContent.aboutMeSlide, defaultDuration, {
+        }, 0) // SHOW ABOUT PAGE
+        .fromTo(firstPageContent.aboutMeSlide, defaultDuration, {
             ease: easing,
-            opacity: 1,
-            x: 20
-        }, 1.5);
+            opacity: 0,
+            x: -20
+        }, {x: 0, opacity: 1},  1);
 
-        // firstPageContent.img.classList.add('hide');
-
-        // this.showAboutPage = new TimelineMax();
+        firstPageContent.aboutMeSlide.classList.replace('inactive', 'active');
     };
     // Bind function with event listener
     links.aboutMe.addEventListener('click', showAboutPage);
 
     const backToIntro = () => {
+        // firstPageContent.aboutMeSlide.classList.replace('active', 'inactive');
         // firstPageContent.aboutMeSlide.classList.remove('active');
         // Intro is active 
+        
         links.introLink.classList.add('active');
 
         // OTHER LINKS SHOUD BE SET BACK TO NORMAL STATE
         links.aboutMe.classList.remove('active');
         links.skills.classList.remove('active');
 
-        // this.backtoIntro_aboutTimeline = new TimelineMax()
-        // .to(firstPageContent.aboutMeSlide, defaultDuration, {
-        //     ease: easing,
-        //     opacity: 0,
-        //     y: -20
-        // }, 0.1);
-
+        this.backtoIntro_aboutTimeline = new TimelineMax()
+        .to(firstPageContent.aboutMeSlide, defaultDuration, {
+            ease: easing,
+            opacity: 0,
+            // y: -20
+        }, 0.1);
+        
         this.hideIntro.reverse();
-        //firstPageContent.aboutMeSlide.classList.replace('active', 'inactive');
+        
+        setTimeout(() => {
+            firstPageContent.aboutMeSlide.classList.replace('active', 'inactive');
+        }, 1000);
     }
 
     links.introLink.addEventListener('click', backToIntro);
@@ -252,4 +255,6 @@
     };
 
     links.skills.addEventListener('click', showSkillsSlide);
+
+
 }

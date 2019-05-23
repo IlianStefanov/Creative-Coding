@@ -43,7 +43,8 @@ body {
 	--color-social-hover: #000;
 	--color-reel-number: #111;
 	--color-menu-link: #101010;
-	--color-menu-link-hover: #000;
+    --color-menu-link-hover: #000;
+    --main-font-family: Futura, futura-pt, sans-serif;
 	color: var(--color-text);
 	background-color: var(--color-bg);
 	font-family: Futura, futura-pt, sans-serif;
@@ -301,10 +302,86 @@ a:focus {
     opacity: 0;
     width: calc(100% - 6rem);
     height: calc(100% - 4rem - 10%);
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 3rem 1fr 1fr 3rem;
     grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "..... ....."
+    "intro ....."
+    "text-glitch text-glitch"
+    "..... .....";
     color: white;
 }
+.about__me__intro {
+    grid-area: intro;
+    align-self: center;
+}
+.about__me__and__span {
+    /* grid-area: and-el; */
+    align-self: center;
+    justify-self: center;
+    font-family: Lato, sans-serif;
+    font-size: 4rem;
+    color: crimson;
+    font-weight: 900;
+    display: block;
+}
+.about__me__i__am {
+    font-size: 4rem;
+    color: crimson;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 2px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    margin: 1rem 0;
+}
+.about__me__title {
+    font-size: 4rem;
+    color: crimson;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 2px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    margin: 1rem 0;
+    display: inline-block;
+}
+.about__me__name {
+    -webkit-text-fill-color: crimson;
+    -webkit-text-stroke-width: 0px;
+    color: white;
+}
+.about__me__texteffect {
+    grid-area: text-glitch;
+    position: relative;
+}
+
+.about__me__texteffect h1 {
+    font-size: 5rem;
+    margin: 1rem 0;
+}
+.first {
+    text-align: left;
+    color: crimson;
+    position: absolute;
+    top: 0px;
+    left: 8px;
+
+  }
+  
+  .second {
+    position: absolute;
+    top: 3px;
+    left: 7px;
+    color: black;
+    mix-blend-mode: darken;
+  }
+  
+  .third {
+    position: absolute;
+    top: 6px;
+    left: 3px;
+    color: white;
+    /* mix-blend-mode: color-burn; */
+  }
 /* .about__me__link {
     
 }
