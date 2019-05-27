@@ -38,9 +38,10 @@
         img: content.first.querySelector('.intro__img'),
         title: content.first.querySelector('.intro__title'),
         enter: content.first.querySelector('.intro__enter'),
-
+        // About page
         aboutMeSlide: content.first.querySelector('.about__me__slide'),
         aboutMeTitle: content.first.querySelector('.about__me__title'),
+        aboutMeSocialLinks: content.first.querySelector('.social-connections')
     }
 
     const links = {
@@ -212,7 +213,22 @@
             ease: easing,
             opacity: 0,
             x: -20
-        }, {x: 0, opacity: 1},  1);
+        }, {x: 0, opacity: 1},  1)
+        .staggerTo(firstPageContent.aboutMeSocialLinks.children, defaultDuration, {
+            opacity: 1,
+            
+        }, .2, 1)
+        // .staggerTo(firstPageContent.aboutMeSocialLinks.children, defaultDuration, {
+        //     opacity: 1,
+        //     y: 0
+        // }, .2, 0.8)
+        .to(firstPageContent.img, defaultDuration, {
+            x: 0,
+            opacity: 0
+        }, 1)
+        .to(firstPageContent.img, defaultDuration, {
+            opacity: 0.5
+        }, 2);
 
         firstPageContent.aboutMeSlide.classList.replace('inactive', 'active');
     };
@@ -235,7 +251,11 @@
             ease: easing,
             opacity: 0,
             // y: -20
-        }, 0.1);
+        }, 0.1)
+        .to(firstPageContent.img, defaultDuration, {
+            x: 0, 
+            opacity: 0.5
+        });
         
         this.hideIntro.reverse();
         
