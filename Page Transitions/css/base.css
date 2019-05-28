@@ -126,7 +126,7 @@ a:focus {
     background-size: cover;
     grid-row: 2 / span 2;
     grid-column: 1;
-
+    background-repeat: no-repeat;
     
     left: 0;
     right: 0;
@@ -146,14 +146,17 @@ a:focus {
 } */
 .intro__title {
     position: relative;
-    grid-row: 2 / span 2;
+    grid-row: 1 / span 3;
+    /* grid-row: 2 / span 2; */
     grid-column: 1;
     font-weight: 700;
-    font-size: 8vw;
+    font-size: 6rem;
     line-height: 1;
     margin: 0;
     color: var(--color-intro-title);
     cursor: default;
+    text-align: center;
+    line-height: 7rem;
 }
 
 .intro__title span {
@@ -317,6 +320,11 @@ a:focus {
     background: none;
     border: 0px;
     color: var(--color-link);
+    padding: 0.1rem 1rem;
+    cursor: pointer;
+}
+.navigation__button:hover {
+    color: crimson;
 }
 .navigation__button.active {
     background: none;
@@ -334,18 +342,43 @@ a:focus {
     opacity: 0;
     width: calc(100% - 6rem);
     height: calc(100% - 4rem - 10%);
-    grid-template-rows: 0rem 1fr 1fr 3rem;
+    grid-template-rows: 0rem 1fr 0.5fr 0.5fr 3rem;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
     "..... ....."
     "intro intro"
     "text-glitch text-glitch"
-    "social-con social-con";
+    "skills skills"
+    "social-con download-cv";
     color: white;
     /* counter glitch class */
     left: unset;
 }
-
+.skills-btn-reveal {
+    grid-area: skills;
+    justify-self: center;
+    align-self: flex-start;
+    opacity: 0;
+}
+.download-cv {
+    grid-area: download-cv;
+    align-self: center;
+    justify-self: flex-end;
+}
+.download-cv .download-btn {
+    color: var(--color-text-frame);
+    font-family: var(--main-font-family);
+    font-size: 1rem;
+    font-weight: bold;
+    background: none;
+    border: 0rem solid var(--color-text-frame);
+    border-radius: 50px;
+    padding: .5rem 2rem;
+    opacity: 0;
+}
+.download-cv .download-btn:hover {
+    color: crimson;
+}
 .about__me__intro {    
     text-align: center;
     grid-area: intro;
@@ -361,7 +394,7 @@ a:focus {
     font-weight: 900;
     display: block;
 }
-.about__me__i__am {
+/* .about__me__i__am {
     font-size: 4rem;
     color: crimson;
     -webkit-text-fill-color: transparent;
@@ -369,7 +402,7 @@ a:focus {
     font-family: 'Lato', sans-serif;
     font-weight: 900;
     margin: 1rem 0;
-}
+} */
 .about__me__title {
     font-size: 3rem;
     color: crimson;
@@ -384,6 +417,12 @@ a:focus {
     -webkit-text-fill-color: crimson;
     -webkit-text-stroke-width: 0px;
     color: white;
+
+    animation-name: glitch-anim-text;
+    animation-duration: var(--time-anim);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: calc(var(--delay-anim) + var(--time-anim) * 0.2);
 }
 .social-connections {
     grid-area: social-con;
@@ -397,10 +436,69 @@ a:focus {
     top: -42px;
     opacity: 0;
 }
+.social-link a {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+.instagram a {
+    background-image: url('../images/2959748-24.png');
+    background-repeat: no-repeat;
+}
+.instagram a:hover {
+    background-image: url('../images/2959748-24 (1).png');
+}
+.linkedin a {
+    background-image: url('../images/107149-24.png');
+    background-repeat: no-repeat;
+}
+.linkedin a:hover {
+    background-image: url('../images/107149-24 (1).png');
+}
+
+.github a {
+    background-image: url('../images/211904-24.png');
+    background-repeat: no-repeat;
+}
+.github a:hover {
+    background-image: url('../images/211904-24 (1).png');
+}
+
+.facebook a {
+    background-image: url('../images/2959749-24.png');
+    background-repeat: no-repeat;
+}
+.facebook a:hover {
+    background-image: url('../images/2959749-24 (1).png');
+}
 .about__me__texteffect_wrapper {
     grid-area: text-glitch;
     position: relative;
 }
+.about__me__texteffect .first {
+    animation-name: glitch-anim-text;
+    animation-duration: var(--time-anim);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: calc(var(--delay-anim) + var(--time-anim) * 0.2);
+}
+
+.about__me__texteffect .second {
+    animation-name: glitch-anim-text;
+    animation-duration: var(--time-anim);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: calc(var(--delay-anim) + var(--time-anim) * 0.2);
+}
+
+.about__me__texteffect .third {
+    animation-name: glitch-anim-text;
+    animation-duration: var(--time-anim);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: calc(var(--delay-anim) + var(--time-anim) * 0.2);
+}
+
 
 .about__me__texteffect {
   
@@ -448,20 +546,38 @@ a:focus {
 } */
 
 /* MEDIA QUERIES */
+@media screen and (max-width: 550px) {
+    .about__me__title {
+        text-align: left;
+        font-size: 2rem !important;
+        -webkit-text-stroke-width: 1px;
+    }
+    .about__me__texteffect h1 {
+        text-align: left;
+        font-size: 2rem !important;
+    }
+}
 @media screen and (max-width: 53em) {
      /* ABOUT ME SLIDE */
     .about__me__slide.active {
         width: calc(100% - 6rem);
         height: calc(70%);
-        top: 10rem;
-        grid-template-rows: 0rem 1fr 1fr 3rem;
+        grid-template-rows: 0rem 20vh 6rem 6rem 3rem;;
         grid-template-columns: 1fr;
-        grid-template-areas: "..... ....."
-                            "intro intro"
-                            "text-glitch text-glitch"
-                            "social-con social-con";
+        grid-template-areas: "....."
+     "intro"
+     "text-glitch"
+     "skills"
+     "social-con"
+     "download-cv";
+        top: 10vh;
     }
-   
+    .social-connections {
+        justify-self: center;
+    }
+    .download-cv {
+        justify-self: center;
+    }
     .reel {
         width: 100%;
 
@@ -471,6 +587,10 @@ a:focus {
     }
     .about__me__texteffect h1 {
         font-size: 2.5rem;
+    }
+    .intro__title {
+        line-height: 6rem;
+        font-size: 4rem;
     }
 }
 @media screen and (min-width: 53em) {
@@ -528,6 +648,7 @@ a:focus {
 		grid-area: demos;
 		justify-self: end;
     }
+
     /* .navigation__buttons::before {
         content: 'Examples: ';
     } */

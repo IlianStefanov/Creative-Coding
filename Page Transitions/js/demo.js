@@ -41,7 +41,10 @@
         // About page
         aboutMeSlide: content.first.querySelector('.about__me__slide'),
         aboutMeTitle: content.first.querySelector('.about__me__title'),
-        aboutMeSocialLinks: content.first.querySelector('.social-connections')
+        aboutMeTextWeb: content.first.querySelector('.about__me__texteffect_wrapper'),
+        aboutMeSocialLinks: content.first.querySelector('.social-connections'),
+        downloadCVButton: content.first.querySelector('.download-btn'),
+        skillsReveal: content.first.querySelector('.skills-btn-reveal')
     }
 
     const links = {
@@ -140,8 +143,38 @@
 
         console.info("Page Toggle Timeline: ", this.pageToggleTimeline);
     }
+    
 
+
+
+    
     firstPageContent.enter.addEventListener('click', showNextPage);
+    // const revealer2 = new Revealer(content.first, { angle: 110 });
+
+    // const showNextRevealEffect = () => {
+    //     content.first.classList.add('content--hidden');
+
+    //     const ease = Expo.easeInOut;
+    //     const duration = 1.2;
+
+    //     this.pageToggleTimeline2 = new TimelineMax()
+    //     // "Unreveal effect" (inner moves to one direction and reverse moves to the opposite one)
+    //     .to(revealer.DOM.el, duration, {
+    //         ease: ease,
+    //         rotation: '-=40'
+    //     }, 0)
+    //     .to(revealer.DOM.inner, duration, {
+    //         ease: ease,
+    //         y: '-100%'
+    //     }, 0)
+    //     .to(revealer.DOM.reverse, duration, {
+    //         ease: ease,
+    //         rotation: '-=-40',
+    //         y: '100%'
+    //     }, 0);
+    // }
+    // firstPageContent.downloadCVButton.addEventListener('click', showNextRevealEffect);
+
 
     // Animate back
     const showIntro = () => {
@@ -212,16 +245,37 @@
         .fromTo(firstPageContent.aboutMeSlide, defaultDuration, {
             ease: easing,
             opacity: 0,
-            x: -20
+            x: 0
         }, {x: 0, opacity: 1},  1)
         .staggerTo(firstPageContent.aboutMeSocialLinks.children, defaultDuration, {
             opacity: 1,
             
         }, .2, 1)
+        .to(firstPageContent.skillsReveal, defaultDuration, {
+            startAt: { opacity: 0 }, 
+            opacity: 1 
+        }, 2)
+        .to(firstPageContent.downloadCVButton, defaultDuration, {
+            opacity: 1,
+        }, 1)
         // .staggerTo(firstPageContent.aboutMeSocialLinks.children, defaultDuration, {
         //     opacity: 1,
         //     y: 0
         // }, .2, 0.8)
+        .to(firstPageContent.aboutMeTitle, defaultDuration, 
+            {
+                startAt: { x: '-10px', opacity: 0},
+                x: 0,
+                opacity: 1
+            }, 1
+        )
+        .to(firstPageContent.aboutMeTextWeb, defaultDuration, 
+            {
+                startAt: { y: '-10px', opacity: 0},
+                y: 0,
+                opacity: 1
+            }, 1
+        )
         .to(firstPageContent.img, defaultDuration, {
             x: 0,
             opacity: 0
