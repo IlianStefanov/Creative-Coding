@@ -328,7 +328,7 @@
         links.aboutMe.classList.remove('active');
     };
 
-    links.skills.addEventListener('click', showSkillsSlide);
+    // links.skills.addEventListener('click', showSkillsSlide);
 
 
 }
