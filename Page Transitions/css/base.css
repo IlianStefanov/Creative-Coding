@@ -319,7 +319,7 @@ a:focus {
 .navigation__button {
     background: none;
     border: 0px;
-    color: var(--color-link);
+    color: var(--color-text-frame);
     padding: 0.1rem 1rem;
     cursor: pointer;
 }
@@ -335,6 +335,20 @@ a:focus {
 
 .about__me__slide {
     display: none;
+}
+
+.skills__section {
+    display: none;
+}
+.skills__section.active {
+    width: calc(100% - 6rem);
+    height: calc(70%);
+    grid-template-rows: 0rem 20vh 6rem 6rem 3rem;
+    grid-template-columns: 1fr;
+    /* grid-template-areas: "....." "intro" "text-glitch" "skills" "social-con" "download-cv"; */
+    top: 10vh;
+    display: grid;
+    position: absolute;
 }
 .about__me__slide.active {
     position: absolute;
@@ -591,6 +605,10 @@ a:focus {
     .intro__title {
         line-height: 6rem;
         font-size: 4rem;
+    }
+    .social-link {
+        margin-left: 1rem;
+        margin-right: 1rem;
     }
 }
 @media screen and (min-width: 53em) {

@@ -44,7 +44,10 @@
         aboutMeTextWeb: content.first.querySelector('.about__me__texteffect_wrapper'),
         aboutMeSocialLinks: content.first.querySelector('.social-connections'),
         downloadCVButton: content.first.querySelector('.download-btn'),
-        skillsReveal: content.first.querySelector('.skills-btn-reveal')
+        skillsReveal: content.first.querySelector('.skills-btn-reveal'),
+        //  Skills section
+        skillsSection: content.first.querySelector('.skills__section'),
+        backToAboutMe: content.first.querySelector('.btn-go-back-about-me')
     }
 
     const links = {
@@ -181,6 +184,7 @@
         // Pointer events related class
         content.first.classList.remove('content--hidden');
         this.pageToggleTimeline.reverse();
+        this.showSkills.reverse();
     };
 
     secondPageContent.backCtrl.addEventListener('click', showIntro);
@@ -219,7 +223,7 @@
         links.aboutMe.classList.add('active');
 
         // remove other links active class
-        links.skills.classList.remove('active');
+        // links.skills.classList.remove('active');
         links.introLink.classList.remove('active');
 
         
@@ -234,7 +238,7 @@
         }, 0)
         .to(firstPageContent.title, defaultDuration, {
             ease: easing,
-            x: 100,
+            y: -100,
             opacity: 0
         }, 0)
         .to(firstPageContent.enter, defaultDuration, {
@@ -284,6 +288,8 @@
             opacity: 0.5
         }, 2);
 
+        
+
         firstPageContent.aboutMeSlide.classList.replace('inactive', 'active');
     };
     // Bind function with event listener
@@ -298,7 +304,7 @@
 
         // OTHER LINKS SHOUD BE SET BACK TO NORMAL STATE
         links.aboutMe.classList.remove('active');
-        links.skills.classList.remove('active');
+        // links.skills.classList.remove('active');
 
         this.backtoIntro_aboutTimeline = new TimelineMax()
         .to(firstPageContent.aboutMeSlide, defaultDuration, {
@@ -321,14 +327,50 @@
     links.introLink.addEventListener('click', backToIntro);
 
     const showSkillsSlide = () => {
-        
-        links.skills.classList.add('active');
+        console.log(links.all.children);
+        // links.skills.classList.add('active');
 
-        // remove other links active class
-        links.aboutMe.classList.remove('active');
+        // // remove other links active class
+        // links.aboutMe.classList.remove('active');
+        this.showSkills = new TimelineMax()
+        .staggerTo(firstPageContent.aboutMeSocialLinks.children, defaultDuration, {
+            opacity: 0,
+            y: -10
+        }, .1, 0)
+        .to(firstPageContent.downloadCVButton, defaultDuration, {
+            opacity: 0,
+            y: -10
+        }, 0)
+        .staggerTo(links.all.children, defaultDuration, {
+            opacity: 0,
+            y: -10
+        }, 0.3, 0)
+        .to(firstPageContent.aboutMeTitle, defaultDuration, {
+            opacity: 0,
+            y: -10
+        }, .5)
+        .to(firstPageContent.aboutMeTextWeb, defaultDuration, {
+            opacity: 0,
+            y: -10
+        }, .5)
+        .to(firstPageContent.skillsReveal, defaultDuration, {
+            opacity: 0,
+            y: -10
+        }, .5)
+        .to(firstPageContent.backToAboutMe, defaultDuration, {
+            x: 100
+        });
+
+        firstPageContent.skillsSection.classList.add('active');
+        this.showSkillsElements = new TimelineMax({ repeat: -1 })
+        .to(firstPageContent.backToAboutMe, defaultDuration, {
+            ease: easing,
+            y: 10
+        }, 2);
     };
 
     // links.skills.addEventListener('click', showSkillsSlide);
 
+    firstPageContent.skillsReveal.addEventListener('click', showSkillsSlide);
 
 }
