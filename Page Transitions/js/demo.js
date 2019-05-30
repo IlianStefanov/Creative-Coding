@@ -184,7 +184,7 @@
         // Pointer events related class
         content.first.classList.remove('content--hidden');
         this.pageToggleTimeline.reverse();
-        this.showSkills.reverse();
+        // this.showSkills.reverse();
     };
 
     secondPageContent.backCtrl.addEventListener('click', showIntro);
@@ -372,5 +372,66 @@
     // links.skills.addEventListener('click', showSkillsSlide);
 
     firstPageContent.skillsReveal.addEventListener('click', showSkillsSlide);
+
+    $(document).mousemove((event) => {
+        var xPos = (event.clientX/$(window).width())-0.5,
+            yPos = (event.clientY/$(window).height())-0.5,
+            bcgImg = $('.intro__img'),
+            introText = $('.intro__title'),
+            seeProjects = $('.intro__enter'),
+            aboutMeTitle = $('.about__me__title'),
+            aboutMeSubtitle = $('.about__me__texteffect_wrapper');
+
+        console.log('bcgImg');
+        TweenLite.to(bcgImg, 0.6, {
+            rotationY: 5 * xPos, 
+            rotationX: 5 * yPos,
+            ease: Power1.easeOut,
+            transformPerspective: 50,
+            transformOrigin: 'center'
+        });
+
+        TweenLite.to(introText, 0.6, {
+            rotationY: 5 * xPos, 
+            rotationX: 5 * yPos,
+            ease: Power1.easeOut,
+            transformPerspective: 90,
+            transformOrigin: 'center'
+        });
+
+        TweenLite.to(aboutMeTitle, 0.6, {
+            rotationY: 5 * xPos, 
+            rotationX: 5 * yPos,
+            ease: Power1.easeOut,
+            transformPerspective: 400,
+            transformOrigin: 'center'
+        });
+        // TweenLite.to(aboutMeSubtitle, 0.6, {
+        //     rotationY: 5 * xPos, 
+        //     rotationX: 5 * yPos,
+        //     ease: Power1.easeOut,
+        //     transformPerspective: 50,
+        //     transformOrigin: 'center'
+        // });
+    });
+
+
+    $('.intro__enter__wrapper').mousemove((event) => {
+        var xPos = (event.clientX/$(window).width())-0.5,
+            yPos = (event.clientY/$(window).height())-0.5,
+            seeProjects = $('.intro__enter');
+
+        console.log('proj');
+        TweenLite.to(seeProjects, 0.6, {
+            x: event.clientX * .005, 
+            y: (event.clientY * .005) * 5,
+            ease: Power1.easeOut,
+            transformPerspective: 20,
+            transformOrigin: 'center'
+        });
+
+        
+    });
+
 
 }

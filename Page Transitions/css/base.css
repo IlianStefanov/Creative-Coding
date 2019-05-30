@@ -164,11 +164,18 @@ a:focus {
     display: inline-block;
     white-space: pre;
 }
-
-.intro__enter {
+.intro__enter__wrapper {
     position: relative;
     grid-row: 3;
     grid-column: 1;
+    display: flex;
+    width: 50%;
+    height: 60%;
+    align-items: center;
+    justify-content: center;
+}
+.intro__enter {
+ 
     color: var(--color-enter);
     font-size: 1.4rem;
     will-change: transform;
@@ -356,23 +363,29 @@ a:focus {
     opacity: 0;
     width: calc(100% - 6rem);
     height: calc(100% - 4rem - 10%);
-    grid-template-rows: 0rem 1fr 0.5fr 0.5fr 3rem;
+    grid-template-rows: 0rem 0.5fr 0.5fr 1fr 3rem;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
     "..... ....."
+    "skills skills"
     "intro intro"
     "text-glitch text-glitch"
-    "skills skills"
     "social-con download-cv";
     color: white;
     /* counter glitch class */
     left: unset;
 }
-.skills-btn-reveal {
+.skills-btn-reveal-wrapper {
     grid-area: skills;
     justify-self: center;
-    align-self: flex-start;
+    align-self: flex-end;
+    display: flex;
+}
+.skills-btn-reveal {
     opacity: 0;
+    padding: 1rem;
+    border-radius: 45px;
+    border: 2px solid crimson;
 }
 .download-cv {
     grid-area: download-cv;
@@ -561,6 +574,10 @@ a:focus {
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 550px) {
+    .intro__title {
+        line-height: 4rem !important;
+        font-size: 3rem !important;
+    }
     .about__me__title {
         text-align: left;
         font-size: 2rem !important;
@@ -576,15 +593,15 @@ a:focus {
     .about__me__slide.active {
         width: calc(100% - 6rem);
         height: calc(70%);
-        grid-template-rows: 0rem 20vh 6rem 6rem 3rem;;
+        grid-template-rows: 0rem 6rem 20vh 6rem 3rem;;
         grid-template-columns: 1fr;
         grid-template-areas: "....."
+     "skills"
      "intro"
      "text-glitch"
-     "skills"
      "social-con"
      "download-cv";
-        top: 10vh;
+        top: 15vh;
     }
     .social-connections {
         justify-self: center;
@@ -610,6 +627,39 @@ a:focus {
         margin-left: 1rem;
         margin-right: 1rem;
     }
+    .frame {
+        top: 0;
+    position: absolute;
+    /* padding: 3rem 5vw; */
+    text-align: center;
+    /* position: relative; */
+    text-transform: lowercase;
+    color: var(--color-text-frame);
+    bottom: 0;
+    margin: auto;
+    right: 0;
+    left: 0;
+    display: grid;
+    grid-template-rows: 5rem 5rem;
+    grid-row-gap:  calc(100vh - 10rem);
+    }
+    .frame__title-wrap {
+        display: flex;
+        justify-self: center;
+        align-self: center;
+    }
+    .frame__title {
+        margin: 0px;
+    }
+    .navigation__buttons {
+        display: flex;
+        justify-self: center;
+        align-self: center;
+    }
+    .skills-btn-reveal-wrapper {
+        align-self: center;
+    }
+
 }
 @media screen and (min-width: 53em) {
     
