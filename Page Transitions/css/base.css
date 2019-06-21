@@ -221,10 +221,10 @@ a:focus {
 /* SECOND PAGE AFTER REVEAL */
 .content--grid {
     padding: 2em;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 35% 65%;
     grid-template-rows:  80px auto auto auto auto;
     grid-template-areas: 
-    'back social'
+    'back ...'
     'title title'
     'text text'
     'select select'
@@ -275,6 +275,14 @@ a:focus {
     width: 100%;
     /* width: 250px; */
     align-self: start;
+    display: grid;
+    height: 100%;
+
+}
+.reel__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .reel__img {
     /* display: block;
@@ -291,7 +299,7 @@ a:focus {
     max-height: 200px;
     /* margin-left: 0.5rem; */
     margin: 0.5rem;
-
+    width: 33%;
 }
 .reel__number {
     width: 40px;
@@ -731,15 +739,15 @@ a:focus {
     .content--grid {
         padding: 3rem 3rem 2rem;
         /* grid-template-columns: 50% 250px auto; */
-        grid-template-columns: 50% 40% 10%;
+        grid-template-columns: 35% 65%;
         /* grid-column-gap: 1rem; */
         grid-template-rows: repeat(5,25%);
         grid-template-areas: 
         "back reel"
         "title reel"
         "text reel"
-        "select reel"
-        "social ...";
+        "select reel";
+        /* "social ..."; */
     }
     .content__back {
         background: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='32px' height='22px' viewBox='0 0 32 22' %3E %3Cpath d='M1.301 10.658L11.615.344 14.39 3.12 8.616 8.893H30.73v3.923H8.617l5.773 5.774-2.775 2.774L1.301 11.05a.28.28 0 0 1 0-.392z' stroke='%23000000' stroke-width='1px' fill='none'/%3E %3C/svg%3E") no-repeat 50% 50%;
