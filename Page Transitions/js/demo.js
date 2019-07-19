@@ -145,6 +145,23 @@
         }, 0.03, 0.5);
 
         console.info("Page Toggle Timeline: ", this.pageToggleTimeline);
+        console.log("svurshi animiraneto na predishnata sekciq sega trqbwa da se izpulni i animaciikata s kartichkata");
+
+        var card = $('.card');
+
+        this.tlCardShow = new TimelineMax({
+            delay: 3
+        });
+
+        tlCardShow.set(card, {
+            opacity: 1,
+            transform: 'translate3d(0, 120vmin, 0)'
+        });
+
+        tlCardShow.to(card, 1, {
+            transform: 'none',
+            ease: Elastic.easeOut.config(0.5, 0.65)
+        });
     }
     
 
@@ -184,6 +201,7 @@
         // Pointer events related class
         content.first.classList.remove('content--hidden');
         this.pageToggleTimeline.reverse();
+        this.tlCardShow.reverse();
         // this.showSkills.reverse();
     };
 
@@ -433,5 +451,10 @@
         
     });
 
+    
 
+    // tl.to(card, 2, {
+    // rotationY: 180,
+    // ease: Elastic.easeInOut.config(1, 1)
+    // }, 'flip+=0.2');
 }
