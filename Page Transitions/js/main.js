@@ -145,7 +145,6 @@
         }, 0.03, 0.5);
 
         console.info("Page Toggle Timeline: ", this.pageToggleTimeline);
-        console.log("svurshi animiraneto na predishnata sekciq sega trqbwa da se izpulni i animaciikata s kartichkata");
 
         var card = $('.card');
 
@@ -317,7 +316,8 @@
         // firstPageContent.aboutMeSlide.classList.replace('active', 'inactive');
         // firstPageContent.aboutMeSlide.classList.remove('active');
         // Intro is active 
-        
+        this.hideIntro.reverse();
+
         links.introLink.classList.add('active');
 
         // OTHER LINKS SHOUD BE SET BACK TO NORMAL STATE
@@ -335,7 +335,7 @@
             opacity: 0.5
         });
         
-        this.hideIntro.reverse();
+        
         
         setTimeout(() => {
             firstPageContent.aboutMeSlide.classList.replace('active', 'inactive');
@@ -400,7 +400,6 @@
             aboutMeTitle = $('.about__me__title'),
             aboutMeSubtitle = $('.about__me__texteffect_wrapper');
 
-        console.log('bcgImg');
         TweenLite.to(bcgImg, 0.6, {
             rotationY: 5 * xPos, 
             rotationX: 5 * yPos,
@@ -439,7 +438,6 @@
             yPos = (event.clientY/$(window).height())-0.5,
             seeProjects = $('.intro__enter');
 
-        console.log('proj');
         TweenLite.to(seeProjects, 0.6, {
             x: event.clientX * .005, 
             y: (event.clientY * .005) * 5,
